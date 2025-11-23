@@ -1,0 +1,22 @@
+{
+  "name": "@onusshar/core",
+  "version": "0.1.0",
+  "description": "Core phonetic engine for Onusshar Bengali keyboard",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "keywords": ["bengali", "bangla", "phonetic", "keyboard", "transliteration"],
+  "author": "Onusshar Contributors",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^29.5.10",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.1",
+    "typescript": "^5.3.2"
+  }
+}

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Onusshar - Bengali Phonetic Keyboard</title>
+  </head>
+  <body>
+    <div id="app">
+      <div id="header">
+        <h1>Onusshar</h1>
+        <p class="subtitle">Bengali Phonetic Keyboard</p>
+      </div>
+
+      <div id="mode-indicator">
+        <span id="current-mode">বাংলা</span>
+        <button id="toggle-mode-btn">Switch Mode</button>
+      </div>
+
+      <div id="main-content">
+        <!-- Navigation Tabs -->
+        <div class="tabs">
+          <button class="tab-btn active" data-tab="typing">Typing</button>
+          <button class="tab-btn" data-tab="settings">Settings</button>
+          <button class="tab-btn" data-tab="about">About</button>
+        </div>
+
+        <!-- Typing Tab -->
+        <div id="typing-tab" class="tab-content active">
+          <div class="typing-area">
+            <label for="input-box">Type in Roman/Latin:</label>
+            <textarea
+              id="input-box"
+              placeholder="Type here... (e.g., 'ami bangla likchi')"
+              rows="4"
+            ></textarea>
+
+            <label for="output-box">Bengali Output:</label>
+            <div id="output-box" class="output"></div>
+
+            <div class="actions">
+              <button id="copy-btn">Copy to Clipboard</button>
+              <button id="clear-btn">Clear</button>
+            </div>
+          </div>
+
+          <div class="help">
+            <h3>Quick Help</h3>
+            <ul>
+              <li><code>ka</code> → কা</li>
+              <li><code>kh</code> → খ</li>
+              <li><code>bangla</code> → বাঙলা</li>
+              <li><code>\hello</code> → hello (escape)</li>
+              <li><code>ami tomake bhalobashi</code> → আমি তোমাকে ভালোবাষি</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Settings Tab -->
+        <div id="settings-tab" class="tab-content">
+          <h2>Settings</h2>
+
+          <div class="setting-group">
+            <label for="phonetic-mode">Phonetic Mode:</label>
+            <select id="phonetic-mode">
+              <option value="smart">Smart (Recommended)</option>
+              <option value="basic">Basic</option>
+            </select>
+          </div>
+
+          <div class="setting-group">
+            <label for="digit-format">Digit Format:</label>
+            <select id="digit-format">
+              <option value="bangla">Bengali (০-৯)</option>
+              <option value="western">Western (0-9)</option>
+            </select>
+          </div>
+
+          <div class="setting-group">
+            <label>
+              <input type="checkbox" id="enable-hotkey" />
+              Enable Global Hotkey
+            </label>
+          </div>
+
+          <div class="setting-group">
+            <label for="hotkey-display">Hotkey:</label>
+            <input
+              type="text"
+              id="hotkey-display"
+              readonly
+              placeholder="Control+Alt+B"
+            />
+            <button id="change-hotkey-btn">Change</button>
+          </div>
+
+          <div class="actions">
+            <button id="save-settings-btn">Save Settings</button>
+            <button id="export-btn">Export Settings</button>
+            <button id="import-btn">Import Settings</button>
+          </div>
+        </div>
+
+        <!-- About Tab -->
+        <div id="about-tab" class="tab-content">
+          <h2>About Onusshar</h2>
+          <p>
+            <strong>Onusshar</strong> is a modern, fast, open-source Bengali phonetic
+            keyboard for Windows & macOS.
+          </p>
+          <p>Version: 0.1.0</p>
+          <p>
+            Type Bengali using familiar Roman/Latin letters with smart phonetic
+            conversion.
+          </p>
+
+          <h3>Features</h3>
+          <ul>
+            <li>Smart phonetic conversion</li>
+            <li>System tray integration</li>
+            <li>Global hotkey support</li>
+            <li>Customizable settings</li>
+            <li>Cross-platform (Windows, macOS)</li>
+          </ul>
+
+          <h3>License</h3>
+          <p>MIT License - Open Source</p>
+
+          <h3>Links</h3>
+          <ul>
+            <li><a href="#" id="github-link">GitHub Repository</a></li>
+            <li><a href="#" id="docs-link">Documentation</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script src="renderer.js"></script>
+  </body>
+</html>
