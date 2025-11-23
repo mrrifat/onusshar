@@ -1,0 +1,13 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+		/* Project structure for OnussharInputMethod */
+		/* This is a simplified Xcode project file */
+		/* Use Xcode to properly configure the project */
+	};
+	rootObject = "PROJECT_ROOT";
+}

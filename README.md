@@ -2,7 +2,7 @@
 
 **A modern, fast, open-source Bengali phonetic keyboard for Windows & macOS.**
 
-![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)
+![Version](https://img.shields.io/badge/version-0.2.0-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS-lightgrey.svg)
 
@@ -12,20 +12,29 @@ Onusshar (অনুস্বর) lets you type Bengali naturally using familiar 
 
 ## ✨ Features
 
+### Phase 1 (v0.1.0) - Desktop App ✅
 - 🚀 **Fast & Lightweight** - Minimal resource usage, instant conversion
 - 🧠 **Smart Phonetic Engine** - Context-aware vowel signs and conjunct formation
-- ⌨️ **Global Hotkey** - Toggle Bengali/English mode from anywhere (default: `Ctrl+Alt+B`)
-- 🎨 **System Tray Integration** - Runs quietly in the background, always accessible
+- ⌨️ **Global Hotkey** - Toggle Bengali/English mode from anywhere
+- 🎨 **System Tray Integration** - Runs quietly in the background
 - ⚙️ **Highly Configurable** - Customize mappings, hotkeys, and behavior
-- 🔄 **Cross-Platform** - Works on both Windows and macOS
-- 🎯 **Developer-Friendly** - Clean architecture, extensible core engine
 - 📦 **Open Source** - MIT licensed, community-driven
+
+### Phase 2 (v0.2.0) - Native IME ✅ NEW!
+- 🎯 **System-Wide Typing** - Type Bengali in any application (Word, Chrome, VS Code, etc.)
+- ⚡ **Windows TSF IME** - Native Text Services Framework implementation
+- 🍎 **macOS Input Method** - Native Input Method Kit integration
+- 💡 **Candidate Window** - Shows suggestions as you type
+- 🔄 **Inline Composition** - See Bengali text form in real-time
+- 🚫 **No Copy-Paste** - Direct Bengali input, just like any other language
 
 ---
 
 ## 📥 Installation
 
-### Windows
+### Option 1: Desktop App (Phase 1)
+
+#### Windows
 
 1. Download `OnussharSetup-0.1.0-win64.exe` from [Releases](#)
 2. Run the installer
@@ -34,7 +43,7 @@ Onusshar (অনুস্বর) lets you type Bengali naturally using familiar 
 
 **Requirements**: Windows 10 (1809+) or Windows 11, x64
 
-### macOS
+#### macOS
 
 1. Download `Onusshar-0.1.0.dmg` from [Releases](#)
 2. Open the DMG file
@@ -42,6 +51,39 @@ Onusshar (অনুস্বর) lets you type Bengali naturally using familiar 
 4. Launch from Applications or Spotlight
 
 **Requirements**: macOS Monterey (12.0) or later, Universal Binary (Intel + Apple Silicon)
+
+### Option 2: Native IME (Phase 2) ⭐ RECOMMENDED
+
+#### Windows TSF IME
+
+1. Download `OnussharIME-0.2.0-win64.zip` from [Releases](#)
+2. Extract to `C:\Program Files\Onusshar\`
+3. Run as Administrator:
+   ```cmd
+   regsvr32 "C:\Program Files\Onusshar\OnussharIME.dll"
+   ```
+4. Go to **Settings** > **Time & Language** > **Language** > **Bengali** > **Options**
+5. Add **Onusshar** keyboard
+6. Press **Win+Space** to switch input methods
+
+**Requirements**: Windows 10 (1809+) or Windows 11, x64, Administrator access
+
+#### macOS Input Method
+
+1. Download `OnussharInputMethod-0.2.0.dmg` from [Releases](#)
+2. Copy **Onusshar.app** to `/Library/Input Methods/`:
+   ```bash
+   sudo cp -R Onusshar.app /Library/Input\ Methods/
+   ```
+3. Restart Input Method system:
+   ```bash
+   killall IMKServer
+   ```
+4. Go to **System Settings** > **Keyboard** > **Input Sources**
+5. Click **+**, select **Bengali** > **Onusshar**
+6. Press **Control+Space** to switch input methods
+
+**Requirements**: macOS Monterey (12.0) or later, Administrator access
 
 ### From Source
 
@@ -351,7 +393,7 @@ npm run package:mac   # macOS
 
 ## 🗺️ Roadmap
 
-### Phase 1: MVP (Current - v0.1.0)
+### Phase 1: MVP ✅ COMPLETE
 
 ✅ Core phonetic engine
 ✅ Desktop app with typing box
@@ -359,19 +401,20 @@ npm run package:mac   # macOS
 ✅ Global hotkey support
 ✅ Windows & macOS support
 
-### Phase 2: Native IME Integration (v0.2.0)
+### Phase 2: Native IME ✅ COMPLETE (v0.2.0)
 
-- True system-level IME for Windows (Text Services Framework)
-- macOS Input Method integration
-- Type Bengali in any application directly (no typing box needed)
-- Inline suggestions and autocomplete
+✅ Windows TSF IME (type in Word, Chrome, VS Code, etc.)
+✅ macOS Input Method integration (type in Pages, Safari, TextEdit, etc.)
+✅ System-wide typing (no copy-paste needed)
+✅ Candidate window with suggestions
+✅ Inline composition with real-time conversion
 
-### Phase 3: Enhanced Features (v0.3.0)
+### Phase 3: Enhanced Features (v0.3.0) - NEXT
 
-- Linux support (X11/Wayland IME)
-- Dictionary-based autocorrect
-- User-defined custom mappings
-- Word frequency optimization
+- Linux support (IBus/Fcitx5)
+- Dictionary-based autocorrect (50,000+ words)
+- User-defined custom mappings UI
+- Word frequency learning
 - Cloud sync for settings
 
 ### Phase 4: Mobile & Web (v1.0.0)
