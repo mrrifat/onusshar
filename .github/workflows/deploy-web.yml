@@ -32,17 +32,12 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Install dependencies
+      - name: Install dependencies and build
         run: |
           npm install
-          cd core && npm install && npm run build && cd ..
-          cd dictionary && npm install && npm run build && cd ..
-          cd web && npm install
-
-      - name: Build web app
-        run: |
-          cd web
-          npm run build
+          npm run build --workspace=core
+          npm run build --workspace=dictionary
+          npm run build --workspace=web
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

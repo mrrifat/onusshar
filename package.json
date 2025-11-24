@@ -17,7 +17,9 @@
   },
   "workspaces": [
     "core",
-    "app"
+    "dictionary",
+    "app",
+    "web"
   ],
   "devDependencies": {
     "@types/node": "^20.10.0",
