@@ -34,13 +34,9 @@ jobs:
       - name: Install dependencies
         run: |
           npm install
-          cd core
-          npm install
-          npm run build
-          cd ../dictionary
-          npm install
-          npm run build
-          cd ../windows-ime
+          npm run build --workspace=core
+          npm run build --workspace=dictionary
+          cd windows-ime
           npm install
 
       - name: Build Windows IME
@@ -80,8 +76,8 @@ jobs:
       - name: Install dependencies
         run: |
           npm install
-          cd core && npm install && npm run build && cd ..
-          cd dictionary && npm install && npm run build && cd ..
+          npm run build --workspace=core
+          npm run build --workspace=dictionary
 
       - name: Build macOS Input Method
         run: |
@@ -118,8 +114,8 @@ jobs:
       - name: Install dependencies
         run: |
           npm install
-          cd core && npm install && npm run build && cd ..
-          cd dictionary && npm install && npm run build && cd ..
+          npm run build --workspace=core
+          npm run build --workspace=dictionary
           pip install pygobject
 
       - name: Build Linux Package
@@ -151,9 +147,9 @@ jobs:
       - name: Install dependencies and build
         run: |
           npm install
-          cd core && npm install && npm run build && cd ..
-          cd dictionary && npm install && npm run build && cd ..
-          cd web && npm install && npm run build
+          npm run build --workspace=core
+          npm run build --workspace=dictionary
+          npm run build --workspace=web
 
       - name: Create web archive
         run: |
