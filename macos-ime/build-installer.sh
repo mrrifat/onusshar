@@ -29,11 +29,26 @@ mkdir -p "$BUILD_DIR" "$DIST_DIR" "$PKG_ROOT/Applications" "$RESOURCES_DIR" "$DM
 # Step 1: Build the Xcode project
 echo ""
 echo "Step 1: Building Xcode project..."
-xcodebuild -project "$SCRIPT_DIR/OnussharInputMethod.xcodeproj" \
-           -scheme OnussharInputMethod \
-           -configuration Release \
-           -derivedDataPath "$BUILD_DIR/DerivedData" \
-           build
+
+# Check if code signing environment variables are set (for CI)
+if [ -n "$CODE_SIGN_IDENTITY" ]; then
+    echo "Using ad-hoc code signing for CI build..."
+    xcodebuild -project "$SCRIPT_DIR/OnussharInputMethod.xcodeproj" \
+               -scheme OnussharInputMethod \
+               -configuration Release \
+               -derivedDataPath "$BUILD_DIR/DerivedData" \
+               CODE_SIGN_IDENTITY="$CODE_SIGN_IDENTITY" \
+               CODE_SIGNING_REQUIRED="$CODE_SIGNING_REQUIRED" \
+               CODE_SIGNING_ALLOWED="$CODE_SIGNING_ALLOWED" \
+               build
+else
+    echo "Using standard code signing..."
+    xcodebuild -project "$SCRIPT_DIR/OnussharInputMethod.xcodeproj" \
+               -scheme OnussharInputMethod \
+               -configuration Release \
+               -derivedDataPath "$BUILD_DIR/DerivedData" \
+               build
+fi
 
 # Find the built app
 BUILT_APP=$(find "$BUILD_DIR/DerivedData" -name "$APP_NAME.app" -type d | head -n 1)
