@@ -2,7 +2,7 @@
 
 **A modern, fast, open-source Bengali phonetic keyboard for Windows, macOS & Linux.**
 
-![Version](https://img.shields.io/badge/version-0.3.0-blue.svg)
+![Version](https://img.shields.io/badge/version-0.3.1-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)
 
@@ -28,13 +28,21 @@ Onusshar (অনুস্বর) lets you type Bengali naturally using familiar 
 - 🔄 **Inline Composition** - See Bengali text form in real-time
 - 🚫 **No Copy-Paste** - Direct Bengali input, just like any other language
 
-### Phase 3 (v0.3.0) - Enhanced Features ✅ NEW!
+### Phase 3 (v0.3.0) - Enhanced Features ✅
 - 🐧 **Linux IBus Support** - Native integration with IBus input system
-- 📚 **Smart Dictionary** - 100+ common Bengali words with autocomplete
+- 📚 **Smart Dictionary** - Bengali word suggestions with autocomplete
 - 🧠 **Intelligent Suggestions** - Multi-source ranking (phonetic + dictionary + user history)
 - ✨ **Autocorrect** - Common typo corrections and pattern matching
 - 📊 **User Learning** - Adapts to your typing patterns over time
 - 🔍 **Prefix Matching** - Type-ahead suggestions as you type
+
+### Phase 3.1 (v0.3.1) - Comprehensive Dictionary ✅ NEW!
+- 📖 **1550+ Bengali Words** - Extensive dictionary across all categories
+- 🎯 **Smart Autocomplete** - Context-aware word suggestions as you type
+- 🔤 **Multi-Category Coverage** - Verbs, nouns, adjectives, numbers, tech terms
+- ⚡ **Windows/Linux Integration** - Dictionary-powered IME suggestions
+- 🎓 **Frequency-Based Ranking** - Most common words suggested first
+- 💡 **Prefix Search** - Type "am" → আমি, আমরা, আম... (instant results)
 
 ---
 
@@ -454,10 +462,18 @@ npm run package:mac   # macOS
 ✅ User learning system with frequency tracking
 ✅ Prefix-based autocomplete
 
-### Phase 3.1: Extended Features (v0.3.x) - NEXT
+### Phase 3.1: Comprehensive Dictionary ✅ COMPLETE (v0.3.1)
 
-- Expand dictionary to 50,000+ words
-- Integrate dictionary with Windows/macOS IMEs
+✅ Expanded dictionary to 1550+ Bengali words across all categories
+✅ Integrated dictionary with Windows/Linux IMEs
+✅ Smart autocomplete with prefix search
+✅ Frequency-based word ranking
+✅ Multi-category coverage (verbs, nouns, adjectives, numbers, tech)
+
+### Phase 3.2: Extended Features (v0.3.x) - NEXT
+
+- Further expand dictionary to 50,000+ words
+- Integrate dictionary with macOS Input Method
 - User-defined custom mappings UI
 - Cloud sync for settings
 - Fcitx5 support for Linux
