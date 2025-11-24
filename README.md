@@ -1,10 +1,10 @@
 # Onusshar
 
-**A modern, fast, open-source Bengali phonetic keyboard for Windows & macOS.**
+**A modern, fast, open-source Bengali phonetic keyboard for Windows, macOS & Linux.**
 
-![Version](https://img.shields.io/badge/version-0.2.0-blue.svg)
+![Version](https://img.shields.io/badge/version-0.3.0-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
-![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS-lightgrey.svg)
+![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)
 
 Onusshar (অনুস্বর) lets you type Bengali naturally using familiar Roman/Latin letters with intelligent phonetic conversion. Type "ami bangla likchi" and get "আমি বাঙলা লিকছি" instantly.
 
@@ -20,13 +20,21 @@ Onusshar (অনুস্বর) lets you type Bengali naturally using familiar 
 - ⚙️ **Highly Configurable** - Customize mappings, hotkeys, and behavior
 - 📦 **Open Source** - MIT licensed, community-driven
 
-### Phase 2 (v0.2.0) - Native IME ✅ NEW!
+### Phase 2 (v0.2.0) - Native IME ✅
 - 🎯 **System-Wide Typing** - Type Bengali in any application (Word, Chrome, VS Code, etc.)
 - ⚡ **Windows TSF IME** - Native Text Services Framework implementation
 - 🍎 **macOS Input Method** - Native Input Method Kit integration
 - 💡 **Candidate Window** - Shows suggestions as you type
 - 🔄 **Inline Composition** - See Bengali text form in real-time
 - 🚫 **No Copy-Paste** - Direct Bengali input, just like any other language
+
+### Phase 3 (v0.3.0) - Enhanced Features ✅ NEW!
+- 🐧 **Linux IBus Support** - Native integration with IBus input system
+- 📚 **Smart Dictionary** - 100+ common Bengali words with autocomplete
+- 🧠 **Intelligent Suggestions** - Multi-source ranking (phonetic + dictionary + user history)
+- ✨ **Autocorrect** - Common typo corrections and pattern matching
+- 📊 **User Learning** - Adapts to your typing patterns over time
+- 🔍 **Prefix Matching** - Type-ahead suggestions as you type
 
 ---
 
@@ -84,6 +92,32 @@ Onusshar (অনুস্বর) lets you type Bengali naturally using familiar 
 6. Press **Control+Space** to switch input methods
 
 **Requirements**: macOS Monterey (12.0) or later, Administrator access
+
+#### Linux IBus (Phase 3)
+
+1. Download `ibus-onusshar-0.3.0.tar.gz` from [Releases](#)
+2. Extract and install:
+   ```bash
+   tar -xzf ibus-onusshar-0.3.0.tar.gz
+   cd ibus-onusshar
+   sudo python3 setup.py install
+   ```
+3. Restart IBus:
+   ```bash
+   ibus restart
+   ```
+4. Go to **Settings** > **Region & Language** > **Input Sources**
+5. Click **+**, select **Bengali** > **Onusshar**
+6. Press **Super+Space** (or configured shortcut) to switch input methods
+
+**Requirements**: Linux with IBus (Ubuntu, Fedora, Debian, etc.), Python 3.8+, pygobject
+
+**Alternatively, from source:**
+```bash
+cd linux-ibus
+sudo python3 setup.py install
+ibus restart
+```
 
 ### From Source
 
@@ -345,6 +379,7 @@ For detailed architecture, see [docs/architecture.md](docs/architecture.md).
 **Platform-specific:**
 - **Windows**: Visual Studio Build Tools (for native modules)
 - **macOS**: Xcode Command Line Tools
+- **Linux**: Python 3.8+, pygobject, IBus development files
 
 ### Build Steps
 
@@ -377,8 +412,9 @@ npm run package:mac   # macOS
 
 ### Platform-Specific Instructions
 
-- **Windows**: See [windows/README_WINDOWS.md](windows/README_WINDOWS.md)
-- **macOS**: See [macos/README_MACOS.md](macos/README_MACOS.md)
+- **Windows**: See [windows-ime/README.md](windows-ime/README.md)
+- **macOS**: See [macos-ime/README.md](macos-ime/README.md)
+- **Linux**: See [linux-ibus/README.md](linux-ibus/README.md)
 
 ---
 
@@ -409,13 +445,22 @@ npm run package:mac   # macOS
 ✅ Candidate window with suggestions
 ✅ Inline composition with real-time conversion
 
-### Phase 3: Enhanced Features (v0.3.0) - NEXT
+### Phase 3: Enhanced Features ✅ COMPLETE (v0.3.0)
 
-- Linux support (IBus/Fcitx5)
-- Dictionary-based autocorrect (50,000+ words)
+✅ Linux IBus integration (Ubuntu, Fedora, Debian, Arch, etc.)
+✅ Smart dictionary engine with common words
+✅ Intelligent multi-source suggestions (phonetic + dictionary + user)
+✅ Autocorrect functionality with pattern matching
+✅ User learning system with frequency tracking
+✅ Prefix-based autocomplete
+
+### Phase 3.1: Extended Features (v0.3.x) - NEXT
+
+- Expand dictionary to 50,000+ words
+- Integrate dictionary with Windows/macOS IMEs
 - User-defined custom mappings UI
-- Word frequency learning
 - Cloud sync for settings
+- Fcitx5 support for Linux
 
 ### Phase 4: Mobile & Web (v1.0.0)
 

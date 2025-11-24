@@ -1,0 +1,119 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""
+IBus Engine for Onusshar Bengali Phonetic Keyboard
+"""
+
+import os
+import sys
+import getopt
+import locale
+import signal
+
+import gi
+gi.require_version('IBus', '1.0')
+gi.require_version('GLib', '2.0')
+
+from gi.repository import IBus
+from gi.repository import GLib
+
+# Add engine directory to path
+engine_dir = os.path.join(os.path.dirname(__file__), '..')
+sys.path.insert(0, engine_dir)
+
+from onusshar_ibus.engine import OnussharEngine
+
+class IMApp:
+    """IBus Input Method Application"""
+
+    def __init__(self, exec_by_ibus):
+        self.__id = 0
+        self.__ibus_bus = IBus.Bus()
+        self.__ibus_bus.connect("disconnected", self.__bus_disconnected_cb)
+        self.__factory = IBus.Factory.new(self.__ibus_bus.get_connection())
+        self.__factory.add_engine("onusshar",
+                                  GLib.GType.from_name("OnussharEngine"))
+
+        if exec_by_ibus:
+            self.__ibus_bus.request_name("com.onusshar.IBus.Onusshar", 0)
+        else:
+            self.__component = IBus.Component.new(
+                "com.onusshar.IBus.Onusshar",
+                "Onusshar Bengali Phonetic Keyboard",
+                "0.3.0",
+                "MIT",
+                "Onusshar Contributors",
+                "https://github.com/onusshar/onusshar",
+                "",
+                "ibus-onusshar"
+            )
+            engine = IBus.EngineDesc.new(
+                "onusshar",
+                "Onusshar",
+                "Bengali Phonetic Keyboard (Onusshar)",
+                "bn",
+                "MIT",
+                "Onusshar Contributors",
+                "/usr/share/icons/onusshar.svg",
+                "us"
+            )
+            self.__component.add_engine(engine)
+            self.__ibus_bus.register_component(self.__component)
+
+    def run(self):
+        """Run the main loop"""
+        GLib.MainLoop().run()
+
+    def __bus_disconnected_cb(self, bus):
+        """Handle bus disconnection"""
+        GLib.MainLoop().quit()
+
+def launch_engine(exec_by_ibus):
+    """Launch the IBus engine"""
+    IMApp(exec_by_ibus).run()
+
+def print_help(out, v=0):
+    """Print help message"""
+    print("-i, --ibus             executed by IBus.", file=out)
+    print("-h, --help             show this message.", file=out)
+    print("-d, --daemonize        daemonize ibus", file=out)
+    sys.exit(v)
+
+def main():
+    """Main entry point"""
+    try:
+        locale.setlocale(locale.LC_ALL, "")
+    except:
+        pass
+
+    exec_by_ibus = False
+    daemonize = False
+
+    shortopt = "ihd"
+    longopt = ["ibus", "help", "daemonize"]
+
+    try:
+        opts, args = getopt.getopt(sys.argv[1:], shortopt, longopt)
+    except getopt.GetoptError:
+        print_help(sys.stderr, 1)
+
+    for o, a in opts:
+        if o in ("-h", "--help"):
+            print_help(sys.stdout)
+        elif o in ("-d", "--daemonize"):
+            daemonize = True
+        elif o in ("-i", "--ibus"):
+            exec_by_ibus = True
+        else:
+            print("Unknown argument: %s" % o, file=sys.stderr)
+            print_help(sys.stderr, 1)
+
+    if daemonize:
+        if os.fork():
+            sys.exit()
+
+    launch_engine(exec_by_ibus)
+
+if __name__ == "__main__":
+    main()

@@ -1,6 +1,6 @@
 {
   "name": "onusshar",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A modern, fast, open-source Bengali phonetic keyboard for Windows & macOS",
   "main": "dist/main/index.js",
   "author": "Onusshar Contributors",
