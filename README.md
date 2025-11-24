@@ -1,27 +1,42 @@
 # Onusshar
 
-**A modern Bengali phonetic keyboard for Windows, macOS & Linux.**
+**A modern Bengali phonetic keyboard for Windows, macOS, Linux & Web.**
 
-![Version](https://img.shields.io/badge/version-0.3.1-blue.svg)
+![Version](https://img.shields.io/badge/version-0.4.0-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
-![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)
+![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux%20%7C%20Web-lightgrey.svg)
 
 Onusshar (অনুস্বর) lets you type Bengali naturally using Roman letters. Type "ami bangla likhchi" and get "আমি বাংলা লিখছি" instantly.
+
+## 🌐 Try Online - No Installation!
+
+**[Type Bengali Now](https://onusshar.github.io/onusshar)** - Works on any device, any browser!
 
 ---
 
 ## ✨ Features
 
-- 🎯 **System-Wide Typing** - Type Bengali in any application
+- 🎯 **System-Wide Typing** - Type Bengali in any application (desktop apps)
+- 🌐 **Web Version** - Type online without installing anything
 - 📖 **1550+ Word Dictionary** - Smart suggestions as you type
 - 🧠 **Intelligent Autocomplete** - Learns from your typing patterns
 - ⚡ **Fast & Lightweight** - Instant conversion, minimal resources
-- 🌍 **Cross-Platform** - Windows, macOS, and Linux support
+- 🌍 **Cross-Platform** - Windows, macOS, Linux, and web browsers
+- 📱 **Mobile-Friendly** - Works great on phones and tablets (web version)
 - 🆓 **Open Source** - MIT licensed, free forever
 
 ---
 
 ## 📥 Installation
+
+### 🌐 Web Version (Easiest!)
+
+No installation needed! Just visit **[onusshar.github.io/onusshar](https://onusshar.github.io/onusshar)**
+
+- Works on any device
+- No downloads required
+- Start typing immediately
+- Mobile-friendly interface
 
 ### Windows
 
@@ -191,11 +206,12 @@ cd linux-ibus && python3 setup.py sdist   # Linux
 - **v0.2.0** - Native IME for Windows & macOS
 - **v0.3.0** - Linux support, dictionary, smart suggestions
 - **v0.3.1** - 1550+ word dictionary, easy installers
+- **v0.4.0** - Web-based typing tool, mobile-friendly
 
 ### 🚀 Upcoming
 
-- **v0.3.2** - Expand dictionary to 50,000+ words
-- **v1.0.0** - Mobile keyboards (Android, iOS), web version
+- **v0.5.0** - Browser extensions (Chrome, Firefox, Edge)
+- **v1.0.0** - Mobile keyboards (Android, iOS)
 
 ---
 

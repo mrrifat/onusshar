@@ -1,0 +1,88 @@
+.editor {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-lg);
+  background: var(--bg-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.editor-pane {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.editor-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.editor-header label {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.editor-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.editor-input,
+.editor-output {
+  width: 100%;
+  min-height: 300px;
+  padding: var(--spacing-md);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  line-height: 1.6;
+  resize: vertical;
+  transition: border-color 0.2s;
+}
+
+.editor-input {
+  font-family: var(--font-mono);
+}
+
+.editor-input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.editor-output {
+  background: var(--bg-secondary);
+  font-size: 1.25rem;
+  cursor: default;
+}
+
+.editor-output::placeholder {
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .editor {
+    grid-template-columns: 1fr;
+    padding: var(--spacing-md);
+  }
+
+  .editor-input,
+  .editor-output {
+    min-height: 200px;
+  }
+
+  .editor-actions {
+    flex-direction: column;
+  }
+
+  .editor-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
