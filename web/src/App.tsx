@@ -58,7 +58,7 @@ function App() {
       setCursorPosition(newPosition)
 
       // Convert to Bengali
-      const bengali = transliterator.convert(newInput)
+      const bengali = transliterator.convert(newInput).text
       setOutput(bengali)
 
       // Learn the word
