@@ -1,572 +1,66 @@
 # Onusshar
 
-**A modern, fast, open-source Bengali phonetic keyboard for Windows, macOS & Linux.**
+**Type Bengali naturally using Roman letters**
 
-![Version](https://img.shields.io/badge/version-0.3.1-blue.svg)
+![Version](https://img.shields.io/badge/version-0.4.0-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
-![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)
 
-Onusshar (অনুস্বর) lets you type Bengali naturally using familiar Roman/Latin letters with intelligent phonetic conversion. Type "ami bangla likchi" and get "আমি বাঙলা লিকছি" instantly.
+Type "ami bangla likhchi" → get "আমি বাংলা লিখছি"
+
+---
+
+## 🌐 Try Online
+
+**[onusshar.github.io/onusshar](https://onusshar.github.io/onusshar)** - No installation!
+
+---
+
+## 📥 Download
+
+**Windows:** [OnussharSetup-0.4.0-win64.exe](https://github.com/onusshar/onusshar/releases)
+**macOS:** [Onusshar-0.4.0.dmg](https://github.com/onusshar/onusshar/releases)
+**Linux:** [ibus-onusshar-0.4.0.tar.gz](https://github.com/onusshar/onusshar/releases)
+
+---
+
+## ⌨️ How to Type
+
+```
+ami          → আমি
+tumi         → তুমি
+bangla       → বাংলা
+bhalobashi   → ভালোবাসি
+```
+
+**Vowels:** a, i, u, e, o, ii, uu, oi, ou
+**Consonants:** k, kh, g, ch, j, t, th, d, n, p, b, bh, m, r, l, sh, s, h
+**Retroflexes (capitals):** T→ট, D→ড, R→ড়, N→ণ
+**Special:** ~ Ng H ^ ..
+
+Full guide: Check the web version for interactive examples.
 
 ---
 
 ## ✨ Features
 
-### Phase 1 (v0.1.0) - Desktop App ✅
-- 🚀 **Fast & Lightweight** - Minimal resource usage, instant conversion
-- 🧠 **Smart Phonetic Engine** - Context-aware vowel signs and conjunct formation
-- ⌨️ **Global Hotkey** - Toggle Bengali/English mode from anywhere
-- 🎨 **System Tray Integration** - Runs quietly in the background
-- ⚙️ **Highly Configurable** - Customize mappings, hotkeys, and behavior
-- 📦 **Open Source** - MIT licensed, community-driven
-
-### Phase 2 (v0.2.0) - Native IME ✅
-- 🎯 **System-Wide Typing** - Type Bengali in any application (Word, Chrome, VS Code, etc.)
-- ⚡ **Windows TSF IME** - Native Text Services Framework implementation
-- 🍎 **macOS Input Method** - Native Input Method Kit integration
-- 💡 **Candidate Window** - Shows suggestions as you type
-- 🔄 **Inline Composition** - See Bengali text form in real-time
-- 🚫 **No Copy-Paste** - Direct Bengali input, just like any other language
-
-### Phase 3 (v0.3.0) - Enhanced Features ✅
-- 🐧 **Linux IBus Support** - Native integration with IBus input system
-- 📚 **Smart Dictionary** - Bengali word suggestions with autocomplete
-- 🧠 **Intelligent Suggestions** - Multi-source ranking (phonetic + dictionary + user history)
-- ✨ **Autocorrect** - Common typo corrections and pattern matching
-- 📊 **User Learning** - Adapts to your typing patterns over time
-- 🔍 **Prefix Matching** - Type-ahead suggestions as you type
-
-### Phase 3.1 (v0.3.1) - Comprehensive Dictionary ✅ NEW!
-- 📖 **1550+ Bengali Words** - Extensive dictionary across all categories
-- 🎯 **Smart Autocomplete** - Context-aware word suggestions as you type
-- 🔤 **Multi-Category Coverage** - Verbs, nouns, adjectives, numbers, tech terms
-- ⚡ **Windows/Linux Integration** - Dictionary-powered IME suggestions
-- 🎓 **Frequency-Based Ranking** - Most common words suggested first
-- 💡 **Prefix Search** - Type "am" → আমি, আমরা, আম... (instant results)
+- System-wide typing (Windows, macOS, Linux)
+- Web version - works everywhere
+- 1550+ word dictionary with autocomplete
+- Fast & lightweight
+- Open source (MIT)
 
 ---
 
-## 📥 Installation
+## 🛠️ Building
 
-### Option 1: Desktop App (Phase 1)
-
-#### Windows
-
-1. Download `OnussharSetup-0.1.0-win64.exe` from [Releases](#)
-2. Run the installer
-3. Follow the setup wizard
-4. Onusshar will appear in your system tray
-
-**Requirements**: Windows 10 (1809+) or Windows 11, x64
-
-#### macOS
-
-1. Download `Onusshar-0.1.0.dmg` from [Releases](#)
-2. Open the DMG file
-3. Drag **Onusshar.app** to **Applications** folder
-4. Launch from Applications or Spotlight
-
-**Requirements**: macOS Monterey (12.0) or later, Universal Binary (Intel + Apple Silicon)
-
-### Option 2: Native IME (Phase 2 & 3.1) ⭐ RECOMMENDED
-
-#### Windows TSF IME - Easy Installation! 🎉
-
-1. Download `OnussharSetup-0.3.1-win64.exe` from [Releases](https://github.com/onusshar/onusshar/releases)
-2. **Double-click** the installer and follow the wizard
-3. Click "Finish" - installer automatically:
-   - Installs to Program Files
-   - Registers the IME
-   - Opens Language Settings
-4. In Language Settings:
-   - Click "Add a keyboard" under Bengali
-   - Select **Onusshar**
-5. Press **Win+Space** to switch keyboards
-6. Type "ami" → see "আমি" instantly!
-
-**Requirements**: Windows 10 (1809+) or Windows 11, x64
-
-**That's it!** No manual commands, no Administrator prompts - just click and install.
-
-#### macOS Input Method - Easy Installation! 🎉
-
-1. Download `Onusshar-0.3.1.dmg` from [Releases](https://github.com/onusshar/onusshar/releases)
-2. **Double-click** the DMG to open it
-3. **Double-click** `OnussharInstaller.pkg`
-4. Follow the installation wizard
-5. Enter your password when prompted
-6. Click "Close" when complete - installer automatically:
-   - Installs to /Library/Input Methods
-   - Sets permissions
-   - Restarts Input Method system
-7. Go to **System Settings** > **Keyboard** > **Input Sources**
-8. Click **+**, select **Bengali** > **Onusshar**
-9. Press **Control+Space** to switch input methods
-10. Type "ami" → see "আমি" instantly!
-
-**Requirements**: macOS Monterey (12.0) or later, Universal Binary (Intel + Apple Silicon)
-
-**That's it!** No terminal commands needed - everything is automated!
-
-#### Linux IBus (Phase 3)
-
-1. Download `ibus-onusshar-0.3.0.tar.gz` from [Releases](#)
-2. Extract and install:
-   ```bash
-   tar -xzf ibus-onusshar-0.3.0.tar.gz
-   cd ibus-onusshar
-   sudo python3 setup.py install
-   ```
-3. Restart IBus:
-   ```bash
-   ibus restart
-   ```
-4. Go to **Settings** > **Region & Language** > **Input Sources**
-5. Click **+**, select **Bengali** > **Onusshar**
-6. Press **Super+Space** (or configured shortcut) to switch input methods
-
-**Requirements**: Linux with IBus (Ubuntu, Fedora, Debian, etc.), Python 3.8+, pygobject
-
-**Alternatively, from source:**
-```bash
-cd linux-ibus
-sudo python3 setup.py install
-ibus restart
-```
-
-### From Source
-
-```bash
-# Clone the repository
-git clone https://github.com/onusshar/onusshar.git
-cd onusshar
-
-# Install dependencies
-npm install
-
-# Build core engine
-cd core && npm run build && cd ..
-
-# Build and run app
-cd app
-npm run build
-npm start
-```
-
-See [Build Instructions](#building-from-source) for details.
-
----
-
-## 🎯 Quick Start
-
-### Basic Usage
-
-1. **Launch Onusshar** - Look for the icon in system tray/menu bar
-2. **Open typing window** - Click tray icon or use hotkey
-3. **Type in Roman letters**:
-   ```
-   Input:  ami tomake bhalobashi
-   Output: আমি তোমাকে ভালোবাষি
-   ```
-4. **Copy to clipboard** - Click "Copy" button
-5. **Paste anywhere** - Use in any application
-
-### Hotkey Toggle
-
-- **Windows**: `Ctrl+Alt+B`
-- **macOS**: `⌥⌘B` (Option+Command+B)
-
-Press the hotkey to switch between:
-- 🟢 **বাংলা (Bangla)** - Phonetic conversion enabled
-- 🔵 **English** - Direct Latin input
-
-### System Tray Menu
-
-Right-click the tray icon for:
-- Switch mode (Bangla ↔ English)
-- Open typing window
-- Settings
-- About
-- Quit
-
----
-
-## ⌨️ Phonetic Layout
-
-### Vowels
-
-| Type | Get | Example |
-|------|-----|---------|
-| `a` | আ | `ami` → আমি |
-| `i` | ই | `ki` → কি |
-| `ii` / `ee` | ঈ | `dii` → দী |
-| `u` | উ | `tumi` → তুমি |
-| `uu` / `oo` | ঊ | `bhuu` → ভূ |
-| `e` | এ | `ek` → এক |
-| `o` | ও | `lok` → লোক |
-| `oi` | ঐ | `oikko` → ঐক্য |
-| `ou` / `au` | ঔ | `aushod` → ঔষধ |
-
-### Consonants
-
-| Type | Get | Example |
-|------|-----|---------|
-| `k` | ক | `kal` → কাল |
-| `kh` | খ | `khub` → খুব |
-| `g` | গ | `gan` → গান |
-| `gh` | ঘ | `ghor` → ঘোর |
-| `ng` | ঙ | `angul` → আঙুল |
-| `c` / `ch` | চ | `chol` → চল |
-| `j` | জ | `jol` → জল |
-| `t` | ত | `tumi` → তুমি |
-| `th` | থ | `theke` → থেকে |
-| `d` | দ | `din` → দিন |
-| `dh` | ধ | `dhan` → ধান |
-| `n` | ন | `nam` → নাম |
-| `p` | প | `pakhi` → পাখি |
-| `b` | ব | `boi` → বই |
-| `bh` | ভ | `bhalo` → ভালো |
-| `m` | ম | `ma` → মা |
-| `sh` | শ | `shuru` → শুরু |
-| `Sh` | ষ | `Shash` → ষাষ |
-| `s` | স | `sat` → সাত |
-| `h` | হ | `hat` → হাত |
-
-### Retroflexes
-
-| Type | Get | Example |
-|------|-----|---------|
-| `T` | ট | `TaTka` → টাটকা |
-| `Th` | ঠ | `Thanda` → ঠান্ডা |
-| `D` | ড | `Dab` → ডাব |
-| `Dh` | ঢ | `Dhol` → ঢোল |
-| `R` | ড় | `baRi` → বাড়ি |
-| `Rh` | ঢ় | `gaRh` → গাড়্ |
-| `N` | ণ | `puroNo` → পুরোণো |
-
-### Special Characters
-
-| Type | Get | Description |
-|------|-----|-------------|
-| `~` | ঁ | Chandrabindu |
-| `Ng` | ং | Anusvara |
-| `H` | ঃ | Visarga |
-| `^` | ্ | Explicit hasanta/virama |
-| `..` | । | Dari (Bengali full stop) |
-
-### Numbers
-
-Default: Bengali digits (০-৯)
-
-| Type | Bangla | Western (configurable) |
-|------|--------|------------------------|
-| `0-9` | ০-৯ | 0-9 |
-
-Example: `2025` → `২০২৫`
-
-### Escape to Latin
-
-Use backslash `\` to escape:
-
-```
-Input:  ami \John er bondhu
-Output: আমি John এর বন্ধু
-```
-
----
-
-## 🔧 Settings
-
-### Phonetic Mode
-
-- **Smart** (Recommended): Full mapping with context-aware heuristics
-- **Basic**: Minimal mapping, fewer auto-corrections
-
-### Digit Format
-
-- **Bengali** (০-৯): Default, traditional Bengali numerals
-- **Western** (0-9): Latin digits
-
-### Global Hotkey
-
-- Enable/disable global hotkey
-- Customize key combination (Windows: Ctrl+Alt+Key, macOS: Option+Command+Key)
-
-### Import/Export
-
-- **Export Settings**: Save your configuration as JSON
-- **Import Settings**: Restore from JSON file
-
----
-
-## 📖 Examples
-
-### Simple Words
-
-```
-bangla    → বাঙলা
-bhasha    → ভাষা
-shundor   → শুন্দোর
-probhat   → প্রভাত
-shokal    → সকাল
-```
-
-### Sentences
-
-```
-ami bangla shikhchi        → আমি বাঙলা শিখছি
-tumi kemon acho?           → তুমি কেমোন আছো?
-apni ki bangla bolte paren → আপনি কি বাঙলা বোলতে পারেন
-```
-
-### With Escapes
-
-```
-\Hello, ami \Rahim       → Hello, আমি Rahim
-\John bole, "ami ready"  → John বোলে, "আমি ready"
-```
-
-### Numbers
-
-```
-ami 25 bochhor boyeshi   → আমি ২৫ বোছোর বয়েসি
-2025 sale                → ২০২৫ সালে
-```
-
----
-
-## 🏗️ Architecture
-
-Onusshar is designed with a clean, modular architecture:
-
-```
-┌─────────────────────────────────────┐
-│         Desktop App (Electron)       │
-│  ┌─────────────────────────────────┐│
-│  │  UI Layer (Renderer Process)    ││
-│  │  - Typing Box                   ││
-│  │  - Settings Panel               ││
-│  │  - Real-time Preview            ││
-│  └─────────────────────────────────┘│
-│  ┌─────────────────────────────────┐│
-│  │  Main Process                   ││
-│  │  - System Tray                  ││
-│  │  - Global Hotkeys               ││
-│  │  - Settings Storage             ││
-│  └─────────────────────────────────┘│
-└─────────────────────────────────────┘
-              │
-              ▼
-┌─────────────────────────────────────┐
-│   @onusshar/core (Pure TypeScript)  │
-│  ┌─────────────────────────────────┐│
-│  │  Transliterator Engine          ││
-│  │  - Pattern Matching             ││
-│  │  - Context Analysis             ││
-│  │  - Smart Vowel/Consonant Logic  ││
-│  └─────────────────────────────────┘│
-│  ┌─────────────────────────────────┐│
-│  │  Configuration Manager          ││
-│  │  - Mapping Rules (JSON)         ││
-│  │  - User Settings                ││
-│  └─────────────────────────────────┘│
-└─────────────────────────────────────┘
-```
-
-**Core Design Principles:**
-
-1. **Separation of Concerns**: Core engine is platform-agnostic
-2. **Extensibility**: Easy to add new mappings or rules
-3. **Testability**: Comprehensive unit tests for transliteration logic
-4. **Performance**: Optimized pattern matching, minimal overhead
-
-For detailed architecture, see [docs/architecture.md](docs/architecture.md).
-
----
-
-## 🛠️ Building from Source
-
-### Prerequisites
-
-- Node.js 18+ and npm
-- Git
-
-**Platform-specific:**
-- **Windows**: Visual Studio Build Tools (for native modules)
-- **macOS**: Xcode Command Line Tools
-- **Linux**: Python 3.8+, pygobject, IBus development files
-
-### Build Steps
-
-```bash
-# 1. Clone repository
-git clone https://github.com/onusshar/onusshar.git
-cd onusshar
-
-# 2. Install dependencies
-npm install
-
-# 3. Build core engine
-cd core
-npm run build
-npm test  # Run tests
-cd ..
-
-# 4. Build desktop app
-cd app
-npm run build
-
-# 5. Package for your platform
-npm run package:win   # Windows
-npm run package:mac   # macOS
-```
-
-**Output:**
-- Windows: `app/dist-installers/Onusshar Setup 0.1.0.exe`
-- macOS: `app/dist-installers/Onusshar-0.1.0.dmg`
-
-### Platform-Specific Instructions
-
-- **Windows**: See [windows-ime/README.md](windows-ime/README.md)
-- **macOS**: See [macos-ime/README.md](macos-ime/README.md)
-- **Linux**: See [linux-ibus/README.md](linux-ibus/README.md)
-
----
-
-## 📚 Documentation
-
-- [Architecture Overview](docs/architecture.md) - System design and components
-- [Phonetic Layout](docs/phonetic-layout.md) - Complete mapping tables
-- [Roadmap](docs/roadmap.md) - Future features and phases
-- [Core API Reference](core/README.md) - Engine API documentation
-
----
-
-## 🗺️ Roadmap
-
-### Phase 1: MVP ✅ COMPLETE
-
-✅ Core phonetic engine
-✅ Desktop app with typing box
-✅ System tray integration
-✅ Global hotkey support
-✅ Windows & macOS support
-
-### Phase 2: Native IME ✅ COMPLETE (v0.2.0)
-
-✅ Windows TSF IME (type in Word, Chrome, VS Code, etc.)
-✅ macOS Input Method integration (type in Pages, Safari, TextEdit, etc.)
-✅ System-wide typing (no copy-paste needed)
-✅ Candidate window with suggestions
-✅ Inline composition with real-time conversion
-
-### Phase 3: Enhanced Features ✅ COMPLETE (v0.3.0)
-
-✅ Linux IBus integration (Ubuntu, Fedora, Debian, Arch, etc.)
-✅ Smart dictionary engine with common words
-✅ Intelligent multi-source suggestions (phonetic + dictionary + user)
-✅ Autocorrect functionality with pattern matching
-✅ User learning system with frequency tracking
-✅ Prefix-based autocomplete
-
-### Phase 3.1: Comprehensive Dictionary ✅ COMPLETE (v0.3.1)
-
-✅ Expanded dictionary to 1550+ Bengali words across all categories
-✅ Integrated dictionary with Windows/Linux IMEs
-✅ Smart autocomplete with prefix search
-✅ Frequency-based word ranking
-✅ Multi-category coverage (verbs, nouns, adjectives, numbers, tech)
-
-### Phase 3.2: Extended Features (v0.3.x) - NEXT
-
-- Further expand dictionary to 50,000+ words
-- Integrate dictionary with macOS Input Method
-- User-defined custom mappings UI
-- Cloud sync for settings
-- Fcitx5 support for Linux
-
-### Phase 4: Mobile & Web (v1.0.0)
-
-- Android keyboard app
-- iOS keyboard extension
-- Web-based typing tool
-- Browser extensions
-
-See [docs/roadmap.md](docs/roadmap.md) for detailed timeline.
-
----
-
-## 🤝 Contributing
-
-We welcome contributions! Here's how you can help:
-
-### Reporting Issues
-
-- [Open an issue](https://github.com/onusshar/onusshar/issues) for bugs or feature requests
-- Include OS version, app version, and steps to reproduce
-
-### Code Contributions
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Make your changes
-4. Add tests for new functionality
-5. Run tests: `npm test`
-6. Commit: `git commit -m 'Add amazing feature'`
-7. Push: `git push origin feature/amazing-feature`
-8. Open a Pull Request
-
-### Improving Phonetic Mappings
-
-The phonetic mappings are in `core/src/config/default-mappings.ts`. To suggest improvements:
-
-1. Edit the mapping file
-2. Add tests in `core/src/engine/transliterator.test.ts`
-3. Run tests to verify
-4. Submit a PR with explanation
-
-### Documentation
-
-Help improve docs by:
-- Fixing typos or clarifications
-- Adding examples
-- Translating to other languages
+See [INSTALLERS.md](INSTALLERS.md) and [BUILD.md](windows-ime/BUILD.md) files.
 
 ---
 
 ## 📄 License
 
-MIT License - see [LICENSE](LICENSE) file for details.
-
-**TL;DR**: You can use, modify, and distribute Onusshar freely, including for commercial purposes.
+MIT - Free to use, modify, and distribute.
 
 ---
 
-## 🙏 Acknowledgments
-
-Onusshar is inspired by:
-- **Avro Keyboard** - Pioneer of Bengali phonetic typing
-- **OpenBangla Keyboard** - Modern Linux Bengali keyboard
-- The Bengali language community
-
----
-
-## 📞 Support
-
-- **Issues**: [GitHub Issues](https://github.com/onusshar/onusshar/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/onusshar/onusshar/discussions)
-- **Documentation**: [docs/](docs/)
-
----
-
-## ⭐ Show Your Support
-
-If you find Onusshar useful, please:
-- ⭐ Star this repository
-- 🐦 Share on social media
-- 🐛 Report bugs and suggest features
-- 💻 Contribute code or documentation
-
----
-
-**Made with ❤️ for the Bengali-speaking community**
+**Made with ❤️ for the Bengali community** | [Report Issues](https://github.com/onusshar/onusshar/issues)
