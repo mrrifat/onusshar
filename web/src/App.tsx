@@ -25,7 +25,7 @@ function App() {
     setCursorPosition(position)
 
     // Convert to Bengali
-    const bengali = transliterator.convert(value)
+    const bengali = transliterator.convert(value).text
     setOutput(bengali)
 
     // Get word at cursor for suggestions
