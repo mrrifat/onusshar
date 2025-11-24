@@ -1,4 +1,5 @@
 import { Transliterator, PhoneticMode, DigitFormat, ConversionResult } from '@onusshar/core';
+import { createDefaultEngine, SuggestionEngine, Suggestion } from '@onusshar/dictionary';
 
 /**
  * Bridge interface for native IME integration
@@ -13,9 +14,11 @@ export interface IMEBridge {
 
 /**
  * Singleton bridge instance for native IME
+ * Now with comprehensive dictionary support (1550+ words)
  */
 class OnussharIMEBridge implements IMEBridge {
   private transliterator: Transliterator;
+  private suggestionEngine: SuggestionEngine;
   private suggestionCache: Map<string, string[]>;
 
   constructor() {
@@ -23,6 +26,18 @@ class OnussharIMEBridge implements IMEBridge {
       mode: PhoneticMode.SMART,
       digitFormat: DigitFormat.BANGLA,
     });
+
+    // Initialize suggestion engine with comprehensive dictionary
+    this.suggestionEngine = createDefaultEngine({
+      maxSuggestions: 9,  // Match Windows IME candidate limit
+      enableAutocorrect: true,
+      enableUserLearning: true,
+      minWordLength: 1,
+      phoneticWeight: 0.4,
+      dictionaryWeight: 0.4,
+      userHistoryWeight: 0.2,
+    });
+
     this.suggestionCache = new Map();
   }
 
@@ -41,24 +56,47 @@ class OnussharIMEBridge implements IMEBridge {
 
   /**
    * Get suggestions for partial input
-   * For Phase 2, returns single conversion (dictionary comes in Phase 3)
+   * Phase 3.1: Now with comprehensive dictionary (1550+ words)
    */
-  getSuggestions(input: string, limit: number = 5): string[] {
+  getSuggestions(input: string, limit: number = 9): string[] {
+    if (!input || input.trim().length === 0) {
+      return [];
+    }
+
     // Check cache first
     const cacheKey = `${input}:${limit}`;
     if (this.suggestionCache.has(cacheKey)) {
       return this.suggestionCache.get(cacheKey)!;
     }
 
-    // For now, return the converted text as the only suggestion
-    // Phase 3 will add dictionary-based suggestions
-    const converted = this.convert(input);
-    const suggestions = converted ? [converted] : [];
+    try {
+      // Get smart suggestions from dictionary engine
+      const suggestions: Suggestion[] = this.suggestionEngine.getSuggestions(input);
 
-    // Cache the result
-    this.suggestionCache.set(cacheKey, suggestions);
+      // Extract words and limit to requested count
+      const words = suggestions
+        .slice(0, limit)
+        .map(s => s.word);
 
-    return suggestions;
+      // If no dictionary suggestions, fall back to phonetic conversion
+      if (words.length === 0) {
+        const converted = this.convert(input);
+        if (converted && converted !== input) {
+          words.push(converted);
+        }
+      }
+
+      // Cache the result
+      this.suggestionCache.set(cacheKey, words);
+
+      return words;
+    } catch (error) {
+      console.error('Suggestion error:', error);
+
+      // Fallback to simple phonetic conversion
+      const converted = this.convert(input);
+      return converted && converted !== input ? [converted] : [];
+    }
   }
 
   /**
@@ -75,6 +113,27 @@ class OnussharIMEBridge implements IMEBridge {
    */
   clearCache(): void {
     this.suggestionCache.clear();
+  }
+
+  /**
+   * Learn a word from user typing
+   */
+  learnWord(word: string): void {
+    try {
+      this.suggestionEngine.learnWord(word);
+    } catch (error) {
+      console.error('Learn word error:', error);
+    }
+  }
+
+  /**
+   * Get dictionary statistics
+   */
+  getStats() {
+    return {
+      cacheSize: this.suggestionCache.size,
+      // Could expose more stats from suggestionEngine if needed
+    };
   }
 }
 

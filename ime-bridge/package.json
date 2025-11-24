@@ -1,6 +1,6 @@
 {
   "name": "@onusshar/ime-bridge",
-  "version": "0.2.0",
+  "version": "0.3.1",
   "description": "Native bridge between OS IME and Onusshar core engine",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -17,6 +17,7 @@
   "license": "MIT",
   "dependencies": {
     "@onusshar/core": "*",
+    "@onusshar/dictionary": "*",
     "node-addon-api": "^7.0.0"
   },
   "devDependencies": {
