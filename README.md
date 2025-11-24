@@ -2,7 +2,7 @@
 
 **A modern, fast, open-source Bengali phonetic keyboard for Windows, macOS & Linux.**
 
-![Version](https://img.shields.io/badge/version-0.3.0-blue.svg)
+![Version](https://img.shields.io/badge/version-0.3.1-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)
 
@@ -28,13 +28,21 @@ Onusshar (অনুস্বর) lets you type Bengali naturally using familiar 
 - 🔄 **Inline Composition** - See Bengali text form in real-time
 - 🚫 **No Copy-Paste** - Direct Bengali input, just like any other language
 
-### Phase 3 (v0.3.0) - Enhanced Features ✅ NEW!
+### Phase 3 (v0.3.0) - Enhanced Features ✅
 - 🐧 **Linux IBus Support** - Native integration with IBus input system
-- 📚 **Smart Dictionary** - 100+ common Bengali words with autocomplete
+- 📚 **Smart Dictionary** - Bengali word suggestions with autocomplete
 - 🧠 **Intelligent Suggestions** - Multi-source ranking (phonetic + dictionary + user history)
 - ✨ **Autocorrect** - Common typo corrections and pattern matching
 - 📊 **User Learning** - Adapts to your typing patterns over time
 - 🔍 **Prefix Matching** - Type-ahead suggestions as you type
+
+### Phase 3.1 (v0.3.1) - Comprehensive Dictionary ✅ NEW!
+- 📖 **1550+ Bengali Words** - Extensive dictionary across all categories
+- 🎯 **Smart Autocomplete** - Context-aware word suggestions as you type
+- 🔤 **Multi-Category Coverage** - Verbs, nouns, adjectives, numbers, tech terms
+- ⚡ **Windows/Linux Integration** - Dictionary-powered IME suggestions
+- 🎓 **Frequency-Based Ranking** - Most common words suggested first
+- 💡 **Prefix Search** - Type "am" → আমি, আমরা, আম... (instant results)
 
 ---
 
@@ -60,38 +68,45 @@ Onusshar (অনুস্বর) lets you type Bengali naturally using familiar 
 
 **Requirements**: macOS Monterey (12.0) or later, Universal Binary (Intel + Apple Silicon)
 
-### Option 2: Native IME (Phase 2) ⭐ RECOMMENDED
+### Option 2: Native IME (Phase 2 & 3.1) ⭐ RECOMMENDED
 
-#### Windows TSF IME
+#### Windows TSF IME - Easy Installation! 🎉
 
-1. Download `OnussharIME-0.2.0-win64.zip` from [Releases](#)
-2. Extract to `C:\Program Files\Onusshar\`
-3. Run as Administrator:
-   ```cmd
-   regsvr32 "C:\Program Files\Onusshar\OnussharIME.dll"
-   ```
-4. Go to **Settings** > **Time & Language** > **Language** > **Bengali** > **Options**
-5. Add **Onusshar** keyboard
-6. Press **Win+Space** to switch input methods
+1. Download `OnussharSetup-0.3.1-win64.exe` from [Releases](https://github.com/onusshar/onusshar/releases)
+2. **Double-click** the installer and follow the wizard
+3. Click "Finish" - installer automatically:
+   - Installs to Program Files
+   - Registers the IME
+   - Opens Language Settings
+4. In Language Settings:
+   - Click "Add a keyboard" under Bengali
+   - Select **Onusshar**
+5. Press **Win+Space** to switch keyboards
+6. Type "ami" → see "আমি" instantly!
 
-**Requirements**: Windows 10 (1809+) or Windows 11, x64, Administrator access
+**Requirements**: Windows 10 (1809+) or Windows 11, x64
 
-#### macOS Input Method
+**That's it!** No manual commands, no Administrator prompts - just click and install.
 
-1. Download `OnussharInputMethod-0.2.0.dmg` from [Releases](#)
-2. Copy **Onusshar.app** to `/Library/Input Methods/`:
-   ```bash
-   sudo cp -R Onusshar.app /Library/Input\ Methods/
-   ```
-3. Restart Input Method system:
-   ```bash
-   killall IMKServer
-   ```
-4. Go to **System Settings** > **Keyboard** > **Input Sources**
-5. Click **+**, select **Bengali** > **Onusshar**
-6. Press **Control+Space** to switch input methods
+#### macOS Input Method - Easy Installation! 🎉
 
-**Requirements**: macOS Monterey (12.0) or later, Administrator access
+1. Download `Onusshar-0.3.1.dmg` from [Releases](https://github.com/onusshar/onusshar/releases)
+2. **Double-click** the DMG to open it
+3. **Double-click** `OnussharInstaller.pkg`
+4. Follow the installation wizard
+5. Enter your password when prompted
+6. Click "Close" when complete - installer automatically:
+   - Installs to /Library/Input Methods
+   - Sets permissions
+   - Restarts Input Method system
+7. Go to **System Settings** > **Keyboard** > **Input Sources**
+8. Click **+**, select **Bengali** > **Onusshar**
+9. Press **Control+Space** to switch input methods
+10. Type "ami" → see "আমি" instantly!
+
+**Requirements**: macOS Monterey (12.0) or later, Universal Binary (Intel + Apple Silicon)
+
+**That's it!** No terminal commands needed - everything is automated!
 
 #### Linux IBus (Phase 3)
 
@@ -454,10 +469,18 @@ npm run package:mac   # macOS
 ✅ User learning system with frequency tracking
 ✅ Prefix-based autocomplete
 
-### Phase 3.1: Extended Features (v0.3.x) - NEXT
+### Phase 3.1: Comprehensive Dictionary ✅ COMPLETE (v0.3.1)
 
-- Expand dictionary to 50,000+ words
-- Integrate dictionary with Windows/macOS IMEs
+✅ Expanded dictionary to 1550+ Bengali words across all categories
+✅ Integrated dictionary with Windows/Linux IMEs
+✅ Smart autocomplete with prefix search
+✅ Frequency-based word ranking
+✅ Multi-category coverage (verbs, nouns, adjectives, numbers, tech)
+
+### Phase 3.2: Extended Features (v0.3.x) - NEXT
+
+- Further expand dictionary to 50,000+ words
+- Integrate dictionary with macOS Input Method
 - User-defined custom mappings UI
 - Cloud sync for settings
 - Fcitx5 support for Linux
