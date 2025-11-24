@@ -1,0 +1,237 @@
+name: Build Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release version (e.g., 0.4.0)'
+        required: true
+        default: '0.4.0'
+
+permissions:
+  contents: write
+
+jobs:
+  build-windows:
+    name: Build Windows Installer
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install Inno Setup
+        run: |
+          choco install innosetup -y
+
+      - name: Install dependencies
+        run: |
+          npm install
+          cd core
+          npm install
+          npm run build
+          cd ../dictionary
+          npm install
+          npm run build
+          cd ../windows-ime
+          npm install
+
+      - name: Build Windows IME
+        run: |
+          cd windows-ime
+          mkdir -p build assets
+          echo "Placeholder for actual CMake build"
+          # CMake build would go here
+          # cmake -B build -S . -G "Visual Studio 17 2022" -A x64
+          # cmake --build build --config Release
+
+      - name: Build Installer
+        run: |
+          cd windows-ime
+          & "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" installer.iss
+        continue-on-error: true
+
+      - name: Upload Windows Installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-installer
+          path: windows-ime/dist/*.exe
+          if-no-files-found: warn
+
+  build-macos:
+    name: Build macOS Installer
+    runs-on: macos-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          npm install
+          cd core && npm install && npm run build && cd ..
+          cd dictionary && npm install && npm run build && cd ..
+
+      - name: Build macOS Input Method
+        run: |
+          cd macos-ime
+          chmod +x build-installer.sh
+          echo "Placeholder for actual Xcode build"
+          # ./build-installer.sh would be run here after Xcode project is ready
+        continue-on-error: true
+
+      - name: Upload macOS Installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: macos-installer
+          path: macos-ime/dist/*.dmg
+          if-no-files-found: warn
+
+  build-linux:
+    name: Build Linux Package
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          npm install
+          cd core && npm install && npm run build && cd ..
+          cd dictionary && npm install && npm run build && cd ..
+          pip install pygobject
+
+      - name: Build Linux Package
+        run: |
+          cd linux-ibus
+          python3 setup.py sdist
+          mkdir -p dist
+          mv dist/*.tar.gz dist/ibus-onusshar-${{ github.event.inputs.version || '0.4.0' }}.tar.gz || true
+
+      - name: Upload Linux Package
+        uses: actions/upload-artifact@v4
+        with:
+          name: linux-package
+          path: linux-ibus/dist/*.tar.gz
+          if-no-files-found: warn
+
+  build-web:
+    name: Build Web App
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies and build
+        run: |
+          npm install
+          cd core && npm install && npm run build && cd ..
+          cd dictionary && npm install && npm run build && cd ..
+          cd web && npm install && npm run build
+
+      - name: Create web archive
+        run: |
+          cd web/dist
+          tar -czf ../onusshar-web-${{ github.event.inputs.version || '0.4.0' }}.tar.gz .
+          cd ..
+
+      - name: Upload Web Archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: web-app
+          path: web/*.tar.gz
+
+  create-release:
+    name: Create GitHub Release
+    needs: [build-windows, build-macos, build-linux, build-web]
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v') || github.event_name == 'workflow_dispatch'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Display artifacts
+        run: ls -R artifacts/
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ github.event.inputs.version && format('v{0}', github.event.inputs.version) || github.ref_name }}
+          name: Onusshar ${{ github.event.inputs.version || github.ref_name }}
+          body: |
+            ## Downloads
+
+            **Windows:** OnussharSetup-${{ github.event.inputs.version || '0.4.0' }}-win64.exe
+            **macOS:** Onusshar-${{ github.event.inputs.version || '0.4.0' }}.dmg
+            **Linux:** ibus-onusshar-${{ github.event.inputs.version || '0.4.0' }}.tar.gz
+            **Web:** onusshar-web-${{ github.event.inputs.version || '0.4.0' }}.tar.gz
+
+            ## Installation
+
+            ### Windows
+            1. Download and run the .exe installer
+            2. Add Onusshar in Language Settings
+            3. Press Win+Space to switch keyboards
+
+            ### macOS
+            1. Download and open the .dmg file
+            2. Run the installer package
+            3. Add Onusshar in System Settings > Input Sources
+            4. Press Control+Space to switch
+
+            ### Linux
+            1. Extract the .tar.gz file
+            2. Run: `sudo python3 setup.py install`
+            3. Run: `ibus restart`
+            4. Add Onusshar in Settings > Input Sources
+
+            ### Web
+            Visit: https://onusshar.github.io/onusshar
+
+            ## What's New
+
+            See CHANGELOG.md for details.
+          files: |
+            artifacts/windows-installer/*.exe
+            artifacts/macos-installer/*.dmg
+            artifacts/linux-package/*.tar.gz
+            artifacts/web-app/*.tar.gz
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
