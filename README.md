@@ -68,38 +68,45 @@ Onusshar (অনুস্বর) lets you type Bengali naturally using familiar 
 
 **Requirements**: macOS Monterey (12.0) or later, Universal Binary (Intel + Apple Silicon)
 
-### Option 2: Native IME (Phase 2) ⭐ RECOMMENDED
+### Option 2: Native IME (Phase 2 & 3.1) ⭐ RECOMMENDED
 
-#### Windows TSF IME
+#### Windows TSF IME - Easy Installation! 🎉
 
-1. Download `OnussharIME-0.2.0-win64.zip` from [Releases](#)
-2. Extract to `C:\Program Files\Onusshar\`
-3. Run as Administrator:
-   ```cmd
-   regsvr32 "C:\Program Files\Onusshar\OnussharIME.dll"
-   ```
-4. Go to **Settings** > **Time & Language** > **Language** > **Bengali** > **Options**
-5. Add **Onusshar** keyboard
-6. Press **Win+Space** to switch input methods
+1. Download `OnussharSetup-0.3.1-win64.exe` from [Releases](https://github.com/onusshar/onusshar/releases)
+2. **Double-click** the installer and follow the wizard
+3. Click "Finish" - installer automatically:
+   - Installs to Program Files
+   - Registers the IME
+   - Opens Language Settings
+4. In Language Settings:
+   - Click "Add a keyboard" under Bengali
+   - Select **Onusshar**
+5. Press **Win+Space** to switch keyboards
+6. Type "ami" → see "আমি" instantly!
 
-**Requirements**: Windows 10 (1809+) or Windows 11, x64, Administrator access
+**Requirements**: Windows 10 (1809+) or Windows 11, x64
 
-#### macOS Input Method
+**That's it!** No manual commands, no Administrator prompts - just click and install.
 
-1. Download `OnussharInputMethod-0.2.0.dmg` from [Releases](#)
-2. Copy **Onusshar.app** to `/Library/Input Methods/`:
-   ```bash
-   sudo cp -R Onusshar.app /Library/Input\ Methods/
-   ```
-3. Restart Input Method system:
-   ```bash
-   killall IMKServer
-   ```
-4. Go to **System Settings** > **Keyboard** > **Input Sources**
-5. Click **+**, select **Bengali** > **Onusshar**
-6. Press **Control+Space** to switch input methods
+#### macOS Input Method - Easy Installation! 🎉
 
-**Requirements**: macOS Monterey (12.0) or later, Administrator access
+1. Download `Onusshar-0.3.1.dmg` from [Releases](https://github.com/onusshar/onusshar/releases)
+2. **Double-click** the DMG to open it
+3. **Double-click** `OnussharInstaller.pkg`
+4. Follow the installation wizard
+5. Enter your password when prompted
+6. Click "Close" when complete - installer automatically:
+   - Installs to /Library/Input Methods
+   - Sets permissions
+   - Restarts Input Method system
+7. Go to **System Settings** > **Keyboard** > **Input Sources**
+8. Click **+**, select **Bengali** > **Onusshar**
+9. Press **Control+Space** to switch input methods
+10. Type "ami" → see "আমি" instantly!
+
+**Requirements**: macOS Monterey (12.0) or later, Universal Binary (Intel + Apple Silicon)
+
+**That's it!** No terminal commands needed - everything is automated!
 
 #### Linux IBus (Phase 3)
 
