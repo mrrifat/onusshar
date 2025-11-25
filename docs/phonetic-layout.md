@@ -78,7 +78,8 @@ Example:
 | `kh` | খ | U+0996 | খা | `khub` → খুব |
 | `g` | গ | U+0997 | গা | `gan` → গান |
 | `gh` | ঘ | U+0998 | ঘা | `ghor` → ঘোর |
-| `ng` | ঙ | U+0999 | ঙা | `angul` → আঙুল |
+| `Ng` | ঙ | U+0999 | ঙা (velar nasal) | `Ngul` → ঙুল |
+| `ng` | ঙ | U+0999 | ঙা (velar nasal, default) | `angul` → আঙুল |
 
 ### Palatal
 
@@ -90,7 +91,8 @@ Example:
 | `Ch` | ছ | U+099B | ছা (alt) | `Chaya` → ছায়া |
 | `j` | জ | U+099C | জা | `jol` → জল |
 | `jh` | ঝ | U+099D | ঝা | `jhar` → ঝার |
-| `nya` | ঞ | U+099E | ঞা | `gyan` → জ্ঞান |
+| `NG` | ঞ | U+099E | ঞা (palatal nasal) | `NG` → ঞ |
+| `nya` | ঞ | U+099E | ঞা (palatal nasal, alt) | `gYan` → জ্ঞান |
 
 ### Retroflex
 
@@ -137,6 +139,8 @@ Example:
 |-------|--------|---------|------|---------|
 | `y` | য় | U+09AF় | য়া (antastha ya) | `maya` → ময়া |
 | `Y` | য | U+09AF | যা (ja-phala) | `jYoti` → জ্যোতি |
+| `J` | য | U+09AF | যা (ja-phala, alt) | `Jog` → যোগ |
+| `Z` | য | U+09AF | যা (ja-phala, alt) | `Zon` → যোন |
 | `r` | র | U+09B0 | রা | `rat` → রাত |
 | `l` | ল | U+09B2 | লা | `lok` → লোক |
 | `w` | ও | U+0993 | ওয়া | `web` → ওএব |
@@ -177,11 +181,12 @@ Example:
 | `ii` / `ee` | ী | U+09C0 | ঈ-কার | `kii` → কী |
 | `u` | ু | U+09C1 | উ-কার | `ku` → কু |
 | `uu` / `oo` | ূ | U+09C2 | ঊ-কার | `kuu` → কূ |
-| `rri` | ৃ | U+09C3 | ঋ-কার | `krri` → কৃ |
+| `rri` | ৃ | U+09C3 | ঋ-কার (ri-kar) | `krri` → কৃ |
+| `rree` | ৄ | U+09C4 | ৠ-কার (rii-kar) | `krree` → কৄ |
 | `e` | ে | U+09C7 | এ-কার | `ke` → কে |
 | `oi` | ৈ | U+09C8 | ঐ-কার | `koi` → কৈ |
 | `o` / `O` | ো | U+09CB | ও-কার | `ko` → কো |
-| `ou` / `au` | ৌ | U+09CC | ঔ-কার | `kou` → কৌ |
+| `ou` / `au` / `OU` | ৌ | U+09CC | ঔ-কার | `kou` → কৌ |
 
 ### No Vowel (Hasanta)
 
@@ -199,9 +204,11 @@ To remove the inherent vowel, use **hasanta** (্):
 
 | Input | Output | Unicode | Name | Example |
 |-------|--------|---------|------|---------|
-| `~` | ঁ | U+0981 | চন্দ্রবিন্দু | `ha~s` → হাঁস |
-| `Ng` / `NG` | ং | U+0982 | অনুস্বার | `baNgla` → বাংলা |
-| `H` | ঃ | U+0983 | বিসর্গ | `duHkho` → দুঃখো |
+| `~` | ঁ | U+0981 | চন্দ্রবিন্দু (chandrabindu) | `ha~s` → হাঁস |
+| `M` | ঁ | U+0981 | চন্দ্রবিন্দু (alt) | `haMs` → হাঁস |
+| `ng` (at end) | ং | U+0982 | অনুস্বার (anusvara) | `bang` → বাং |
+| `H` | ঃ | U+0983 | বিসর্গ (visarga) | `duHkho` → দুঃখো |
+| `::` | ঃ | U+0983 | বিসর্গ (alt) | `du::kho` → দুঃখো |
 
 ### Punctuation
 
@@ -278,7 +285,11 @@ Example:
 | Input | Output | Name | Example |
 |-------|--------|------|---------|
 | `kSh` | ক্ষ | Khio | `kShetre` → ক্ষেত্রে |
-| `gY` | জ্ঞ | Gyo | `gYan` → জ্ঞান |
+| `ksh` | ক্ষ | Khio (alt) | `kshetre` → ক্ষেত্রে |
+| `gY` | জ্ঞ | Gyan/Jnan | `gYan` → জ্ঞান |
+| `gy` | জ্ঞ | Gyan/Jnan (alt) | `gyan` → জ্ঞান |
+| `jNG` | জ্ঞ | Gyan/Jnan (alt) | `jNGan` → জ্ঞান |
+| `jny` | জ্ঞ | Gyan/Jnan (alt) | `jnyan` → জ্ঞান |
 | `hr` | হ্র | Hro | `hridoy` → হ্রিদোয় |
 
 ---
@@ -328,8 +339,10 @@ Example:
 **Rule**: Some patterns change based on context.
 
 **Example**:
-- `ng` at end of word or before space → ং (anusvara)
-- `ng` elsewhere → ঙ (velar nasal)
+- `NG` (both capital) → ঞ (palatal nasal/taalabya na)
+- `Ng` (capital N, lowercase g) → ঙ (velar nasal)
+- `ng` (both lowercase) at end of word or before space → ং (anusvara)
+- `ng` (both lowercase) elsewhere → ঙ (velar nasal)
 
 ---
 
