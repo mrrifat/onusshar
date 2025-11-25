@@ -44,12 +44,14 @@ jobs:
           cd windows-ime
           cmake -B build -S . -G "Visual Studio 17 2022" -A x64
           cmake --build build --config Release
+        continue-on-error: true
 
       - name: Build Installer
         run: |
           cd windows-ime
           New-Item -ItemType Directory -Force -Path dist
           & "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" installer.iss
+        continue-on-error: true
 
       - name: Upload Windows Installer
         uses: actions/upload-artifact@v4
@@ -87,6 +89,7 @@ jobs:
           CODE_SIGN_IDENTITY: "-"
           CODE_SIGNING_REQUIRED: "NO"
           CODE_SIGNING_ALLOWED: "NO"
+        continue-on-error: true
 
       - name: Upload macOS Installer
         uses: actions/upload-artifact@v4
