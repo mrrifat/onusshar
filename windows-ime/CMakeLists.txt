@@ -12,6 +12,7 @@ endif()
 
 # Source files
 set(SOURCES
+    src/Common.cpp
     src/DllMain.cpp
     src/TextService.cpp
     src/ClassFactory.cpp
