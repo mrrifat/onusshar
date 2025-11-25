@@ -11,15 +11,15 @@ Type "ami bangla likhchi" → get "আমি বাংলা লিখছি"
 
 ## 🌐 Try Online
 
-**[onusshar.github.io/onusshar](https://onusshar.github.io/onusshar)** - No installation!
+**[https://mrrifat.github.io/onusshar](https://mrrifat.github.io/onusshar)** - No installation!
 
 ---
 
 ## 📥 Download
 
-**Windows:** [OnussharSetup-0.4.0-win64.exe](https://github.com/onusshar/onusshar/releases)
-**macOS:** [Onusshar-0.4.0.dmg](https://github.com/onusshar/onusshar/releases)
-**Linux:** [ibus-onusshar-0.4.0.tar.gz](https://github.com/onusshar/onusshar/releases)
+**Windows:** [OnussharSetup-0.4.0-win64.exe](https://github.com/mrrifat/onusshar/releases)
+**macOS:** [Onusshar-0.4.0.dmg](https://github.com/mrrifat/onusshar/releases)
+**Linux:** [ibus-onusshar-0.4.0.tar.gz](https://github.com/mrrifat/onusshar/releases)
 
 ---
 
@@ -30,24 +30,29 @@ ami          → আমি
 tumi         → তুমি
 bangla       → বাংলা
 bhalobashi   → ভালোবাসি
+shundor      → সুন্দর
+prostut      → প্রস্তুত
 ```
 
-**Vowels:** a, i, u, e, o, ii, uu, oi, ou
-**Consonants:** k, kh, g, ch, j, t, th, d, n, p, b, bh, m, r, l, sh, s, h
-**Retroflexes (capitals):** T→ট, D→ড, R→ড়, N→ণ
-**Special:** ~ Ng H ^ ..
+**Vowels:** a, i, u, e, o, ii/ee, uu, oi, ou/au
+**Consonants:** k, kh, g, gh, ch, j, jh, t, th, d, dh, n, p, ph, b, bh, m, y, r, l, sh, s, h
+**Retroflexes (capitals):** T→ট, Th→ঠ, D→ড, Dh→ঢ, R→ড়, N→ণ
+**Common conjuncts:** nt→ন্ত, nd→ন্দ, mp→ম্প, mb→ম্ব, nj→ঞ্জ, ld→ল্দ, x→ক্স
+**Special:** z→জ, q→ক, x→ক্স, X→ক্ষ, Ng→ং, H→ঃ, ~→ঁ, ^→্, ..→।
 
-Full guide: Check the web version for interactive examples.
+Full guide: Try the [web version](https://mrrifat.github.io/onusshar) for interactive examples.
 
 ---
 
 ## ✨ Features
 
-- System-wide typing (Windows, macOS, Linux)
-- Web version - works everywhere
-- 1550+ word dictionary with autocomplete
-- Fast & lightweight
-- Open source (MIT)
+- **System-wide typing** - Windows, macOS, Linux native IME
+- **Web version** - Works anywhere, no installation
+- **Improved phonetic engine** - More accurate with 20+ common conjuncts
+- **Smart conversion** - Automatic vowel sign placement
+- **1550+ word dictionary** - Smart autocomplete suggestions
+- **Lightweight & fast** - Minimal resource usage
+- **Open source** - MIT license, free forever
 
 ---
 
@@ -63,4 +68,4 @@ MIT - Free to use, modify, and distribute.
 
 ---
 
-**Made with ❤️ for the Bengali community** | [Report Issues](https://github.com/onusshar/onusshar/issues)
+**Made with ❤️ for the Bengali community** | [Report Issues](https://github.com/mrrifat/onusshar/issues)

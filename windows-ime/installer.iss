@@ -22,13 +22,13 @@ LicenseFile=..\LICENSE
 PrivilegesRequired=admin
 OutputDir=dist
 OutputBaseFilename=OnussharSetup-{#MyAppVersion}-win64
-SetupIconFile=assets\icon.ico
+; SetupIconFile=assets\icon.ico
 Compression=lzma2/ultra64
 SolidCompression=yes
 WizardStyle=modern
 ArchitecturesAllowed=x64
 ArchitecturesInstallIn64BitMode=x64
-UninstallDisplayIcon={app}\assets\icon.ico
+; UninstallDisplayIcon={app}\assets\icon.ico
 UninstallDisplayName={#MyAppName}
 
 [Languages]
@@ -40,8 +40,8 @@ Name: "bengali"; MessagesFile: "compiler:Languages\Unofficial\Bengali.isl"
 Source: "build\Release\OnussharIME.dll"; DestDir: "{app}"; Flags: ignoreversion regserver
 ; Dependencies
 Source: "build\Release\*.dll"; DestDir: "{app}"; Flags: ignoreversion skipifsourcedoesntexist
-; Assets
-Source: "assets\*"; DestDir: "{app}\assets"; Flags: ignoreversion recursesubdirs createallsubdirs
+; Assets (optional)
+Source: "assets\*"; DestDir: "{app}\assets"; Flags: ignoreversion recursesubdirs createallsubdirs skipifsourcedoesntexist
 ; Documentation
 Source: "..\README.md"; DestDir: "{app}"; Flags: ignoreversion isreadme
 Source: "..\LICENSE"; DestDir: "{app}"; Flags: ignoreversion
@@ -54,8 +54,8 @@ Name: "{autoprograms}\Uninstall {#MyAppName}"; Filename: "{uninstallexe}"
 ; Register as Windows IME
 Root: HKLM; Subkey: "SOFTWARE\Microsoft\CTF\TIP\{{8B9F6A3C-4D2E-4F1A-9B3C-7E5D8A2F1C9B}"; Flags: uninsdeletekey
 Root: HKLM; Subkey: "SOFTWARE\Microsoft\CTF\TIP\{{8B9F6A3C-4D2E-4F1A-9B3C-7E5D8A2F1C9B}\LanguageProfile\0x00000445\{{8B9F6A3C-4D2E-4F1A-9B3C-7E5D8A2F1C9B}"; ValueType: string; ValueName: "Description"; ValueData: "{#MyAppName}"; Flags: uninsdeletekey
-Root: HKLM; Subkey: "SOFTWARE\Microsoft\CTF\TIP\{{8B9F6A3C-4D2E-4F1A-9B3C-7E5D8A2F1C9B}\LanguageProfile\0x00000445\{{8B9F6A3C-4D2E-4F1A-9B3C-7E5D8A2F1C9B}"; ValueType: string; ValueName: "IconFile"; ValueData: "{app}\assets\icon.ico"; Flags: uninsdeletekey
-Root: HKLM; Subkey: "SOFTWARE\Microsoft\CTF\TIP\{{8B9F6A3C-4D2E-4F1A-9B3C-7E5D8A2F1C9B}\LanguageProfile\0x00000445\{{8B9F6A3C-4D2E-4F1A-9B3C-7E5D8A2F1C9B}"; ValueType: dword; ValueName: "IconIndex"; ValueData: "0"; Flags: uninsdeletekey
+; Root: HKLM; Subkey: "SOFTWARE\Microsoft\CTF\TIP\{{8B9F6A3C-4D2E-4F1A-9B3C-7E5D8A2F1C9B}\LanguageProfile\0x00000445\{{8B9F6A3C-4D2E-4F1A-9B3C-7E5D8A2F1C9B}"; ValueType: string; ValueName: "IconFile"; ValueData: "{app}\assets\icon.ico"; Flags: uninsdeletekey
+; Root: HKLM; Subkey: "SOFTWARE\Microsoft\CTF\TIP\{{8B9F6A3C-4D2E-4F1A-9B3C-7E5D8A2F1C9B}\LanguageProfile\0x00000445\{{8B9F6A3C-4D2E-4F1A-9B3C-7E5D8A2F1C9B}"; ValueType: dword; ValueName: "IconIndex"; ValueData: "0"; Flags: uninsdeletekey
 
 [Run]
 ; Open Language Settings after installation
