@@ -43,18 +43,15 @@ echo "Compiling Swift Input Method..."
 swiftc -emit-executable \
        -o "$APP_BUNDLE/Contents/MacOS/$APP_NAME" \
        -module-name Onusshar \
-       -import-objc-header "$SCRIPT_DIR/OnussharInputMethod/OnussharInputController.swift" \
        "$SCRIPT_DIR/OnussharInputMethod/OnussharInputController.swift" \
        "$SCRIPT_DIR/OnussharInputMethod/OnussharEngineBridge.swift" \
        "$SCRIPT_DIR/OnussharInputMethod/OnussharCandidateWindow.swift" \
        -framework Cocoa \
        -framework InputMethodKit \
        2>&1 || {
-    echo "✗ Swift compilation failed, trying simpler approach..."
-    # Create a minimal stub if compilation fails
-    echo '#!/bin/bash' > "$APP_BUNDLE/Contents/MacOS/$APP_NAME"
-    echo 'echo "Onusshar Input Method"' >> "$APP_BUNDLE/Contents/MacOS/$APP_NAME"
-    chmod +x "$APP_BUNDLE/Contents/MacOS/$APP_NAME"
+    echo "✗ Swift compilation failed!"
+    echo "Error: Could not compile Swift source files"
+    exit 1
 }
 
 BUILT_APP="$APP_BUNDLE"
