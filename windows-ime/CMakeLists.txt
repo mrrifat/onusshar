@@ -46,10 +46,9 @@ target_link_libraries(OnussharIME
         advapi32
 )
 
-# Output directory
+# Output directory - use default CMake location for installer compatibility
 set_target_properties(OnussharIME PROPERTIES
     OUTPUT_NAME "OnussharIME"
-    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
 )
 
 # Install
