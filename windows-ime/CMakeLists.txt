@@ -20,6 +20,7 @@ set(SOURCES
     src/CandidateWindow.cpp
     src/KeyHandler.cpp
     src/EngineProxy.cpp
+    OnussharIME.def
 )
 
 # Header files
