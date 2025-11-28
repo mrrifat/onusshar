@@ -10,16 +10,12 @@ if(WIN32)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /EHsc /W3 /wd4996")
 endif()
 
-# Source files
+# Minimal source files for initial build
 set(SOURCES
     src/Common.cpp
     src/DllMain.cpp
-    src/TextService.cpp
+    src/TextService-minimal.cpp
     src/ClassFactory.cpp
-    src/CompositionManager.cpp
-    src/CandidateWindow.cpp
-    src/KeyHandler.cpp
-    src/EngineProxy.cpp
     OnussharIME.def
 )
 
@@ -27,10 +23,6 @@ set(SOURCES
 set(HEADERS
     src/TextService.h
     src/ClassFactory.h
-    src/CompositionManager.h
-    src/CandidateWindow.h
-    src/KeyHandler.h
-    src/EngineProxy.h
     src/Common.h
 )
 
@@ -44,7 +36,6 @@ target_link_libraries(OnussharIME
         oleaut32
         uuid
         user32
-        gdi32
         advapi32
         msctf
 )
