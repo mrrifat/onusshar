@@ -44,7 +44,9 @@ target_link_libraries(OnussharIME
         oleaut32
         uuid
         user32
+        gdi32
         advapi32
+        msctf
 )
 
 # Output directory - use default CMake location for installer compatibility
