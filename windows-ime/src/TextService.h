@@ -3,14 +3,10 @@
 #include "Common.h"
 #include <msctf.h>
 
-class CompositionManager;
-class CandidateWindow;
-class KeyHandler;
-class EngineProxy;
-
 /**
  * Main Text Service implementation for Onusshar IME
  * Implements ITfTextInputProcessor and related TSF interfaces
+ * Minimal version for initial build
  */
 class TextService : public ITfTextInputProcessor,
                     public ITfThreadMgrEventSink,
@@ -40,7 +36,7 @@ public:
     STDMETHODIMP OnEndEdit(ITfContext* pContext, TfEditCookie ecReadOnly,
                           ITfEditRecord* pEditRecord) override;
 
-    // Public methods
+    // Public methods - stubs for minimal version
     ITfThreadMgr* GetThreadMgr() { return m_pThreadMgr; }
     TfClientId GetClientId() { return m_tfClientId; }
 
@@ -56,11 +52,5 @@ private:
     LONG m_refCount;
     ITfThreadMgr* m_pThreadMgr;
     TfClientId m_tfClientId;
-
-    std::unique_ptr<CompositionManager> m_pCompositionMgr;
-    std::unique_ptr<CandidateWindow> m_pCandidateWnd;
-    std::unique_ptr<KeyHandler> m_pKeyHandler;
-    std::unique_ptr<EngineProxy> m_pEngineProxy;
-
     DWORD m_dwThreadMgrEventSinkCookie;
 };
