@@ -42,6 +42,7 @@ jobs:
       - name: Build Windows IME
         run: |
           cd windows-ime
+          if (Test-Path build) { Remove-Item -Recurse -Force build }
           cmake -B build -S . -G "Visual Studio 17 2022" -A x64
           cmake --build build --config Release
 
