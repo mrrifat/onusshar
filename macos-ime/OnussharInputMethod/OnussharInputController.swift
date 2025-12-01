@@ -85,7 +85,7 @@ class OnussharInputController: IMKInputController {
 
         case 18...26: // Number keys 1-9
             if !modifierFlags.contains(.command) && !modifierFlags.contains(.control) {
-                return handleCandidateSelection(keyCode - 18, client: client)
+                return handleCandidateSelection(Int(keyCode) - 18, client: client)
             }
 
         default:
@@ -203,9 +203,10 @@ class OnussharInputController: IMKInputController {
             return
         }
 
-        // Get cursor position
-        if let client = client() as? IMKTextInput,
-           let cursorRect = client.attributes(forCharacterIndex: 0, lineHeightRectangle: nil)?[kIMKTextInput_CursorPositionKey] as? NSRect {
+        // Get cursor position using firstRect(forCharacterRange:actualRange:)
+        if let client = client() as? IMKTextInput {
+            var actualRange = NSRange()
+            let cursorRect = client.firstRect(forCharacterRange: NSRange(location: 0, length: 0), actualRange: &actualRange)
 
             // Position candidate window below cursor
             var windowRect = cursorRect
