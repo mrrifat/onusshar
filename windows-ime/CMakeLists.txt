@@ -30,15 +30,14 @@ set(HEADERS
 add_library(OnussharIME SHARED ${SOURCES} ${HEADERS})
 
 # Link libraries
-# Use .lib extension for Windows SDK libraries to ensure proper linking
 target_link_libraries(OnussharIME
     PRIVATE
-        ole32.lib
-        oleaut32.lib
-        uuid.lib
-        user32.lib
-        advapi32.lib
-        msctf.lib
+        ole32
+        oleaut32
+        uuid
+        user32
+        advapi32
+        msctf
 )
 
 # Output directory - use default CMake location for installer compatibility
