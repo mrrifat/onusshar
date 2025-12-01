@@ -36,8 +36,6 @@ jobs:
           npm install
           npm run build --workspace=core
           npm run build --workspace=dictionary
-          cd windows-ime
-          npm install
 
       - name: Build Windows IME
         run: |
